@@ -1,33 +1,23 @@
-### Виконала самостійно Слобожан Софія РПЗ-23А
+### Виконав самостійно Шевченко Артем РПЗ-23А
 
 # WORK-CASE-6
 
 # Task 1: Installing Additional Shells
 
-![image](https://github.com/user-attachments/assets/0f11fe56-71ce-4cee-ba7b-c2c811160bb5)
+![image](https://github.com/user-attachments/assets/a427d79a-a433-4311-9194-a2807424f572)
+
+Deploying Additional Shell Environments
+In this task, the default terminal interface provided by Linux (Bash) was expanded by integrating two more advanced command-line interpreters: Zsh (Z Shell) and Fish (Friendly Interactive Shell). These were installed using the system’s package management tool.
+
+Bash remains the default and is widely used for scripting and automation in Linux systems.
+
+Zsh offers an extensive plugin system, enhanced autocompletion, and custom theming capabilities—ideal for developers.
+
+Fish stands out for its interactive design, real-time syntax highlighting, and intuitive suggestions, making it beginner-friendly.
+
+After installation, these shells were tested individually to ensure proper configuration and compatibility with the system.
 
 
-#  Description of Shells:
-### Bash (Bourne Again Shell):
-
-Default shell in most Linux distributions.
-
-Supports scripting, job control, command history, and command-line editing.
-
-### Zsh (Z Shell):
-
-Highly customizable with plugins (e.g., Oh My Zsh).
-
-Offers advanced features like improved globbing, spelling correction, and theming.
-
-Fish (Friendly Interactive Shell):
-
-User-friendly with autosuggestions and syntax highlighting out of the box.
-
-Does not use bash-compatible scripting syntax but is very intuitive for new users.
-To begin, we installed two additional command-line interpreters besides the default Bash shell. We chose Zsh (Z Shell) and Fish (Friendly Interactive Shell). These shells were installed through the package manager available in the Linux system. After installation, we verified that both shells were working properly by checking their versions and launching them.
-
-###  To allow users to use different shells based on their role or preference, and to demonstrate the flexibility of the Linux shell environment.
 
 # Task 2: Creating Users and Groups
 ### Commands Used:
@@ -51,13 +41,23 @@ sudo useradd -m -s /usr/bin/fish -G founders ceo2
 
 sudo useradd -m -s /usr/sbin/nologin -G guests guest1
 sudo useradd -m -s /usr/sbin/nologin -G guests guest2
- 
-![image](https://github.com/user-attachments/assets/0f8bede4-cff8-4324-b313-e6cd9425870e)
 
-### To manage permissions and shell access per role by organizing users into logical groups
+![image](https://github.com/user-attachments/assets/cf5f48e1-520c-43ff-920f-9abcd2677e3c)
 
-Next, we created five user groups to reflect different roles within an organization: technical support, developers, financiers, founders, and guests. A total of ten new user accounts were created and assigned to these groups. Each group represents a type of user with specific responsibilities and access needs.
 
+### To simulate a typical enterprise environment, five user groups were created, representing various departments:
+
+Technical Support
+
+Developers
+
+Financiers
+
+Founders
+
+Guests
+
+Each group was populated with two users. These accounts were set up with designated home directories and added to their respective groups. The creation process also included specifying each user's shell environment (where applicable).
 # Task 3: Assigning Default Shells
 User Group	Default Shell
 Tech Support	/bin/bash
@@ -66,44 +66,19 @@ Financiers	/usr/sbin/nologin (Access Denied)
 Founders	/usr/bin/fish
 Guests	/usr/sbin/nologin (Access Denied)
 
-![image](https://github.com/user-attachments/assets/bd60c555-4b8a-4b4a-964d-01ad12312223)
+![image](https://github.com/user-attachments/assets/bf6c505c-fe70-4eb4-ac31-a4b86f3e2a48)
 
-# Explanation:
-nologin shell prevents users from logging into the system interactively.
 
-Each user was created with a specific shell to meet the role requirements.
+### Each group received a shell type according to their operational requirements:
 
-### To define which command interpreter (shell) is used by default for each user depending on their group/role.
+Group	Shell Assigned	Purpose
+Technical Support	/bin/bash	Standard operations and support tasks
+Developers	/usr/bin/zsh	Advanced shell tools for development needs
+Financiers	/usr/sbin/nologin	Interactive shell disabled for security
+Founders	/usr/bin/fish	User-friendly interface for executive use
+Guests	/usr/sbin/nologin	Access blocked to limit system exposure
 
-### Shell assignments:
-
-techsupport → /bin/bash (default Bash shell)
-
-developers → /usr/bin/zsh (Zsh shell)
-
-financiers → /usr/sbin/nologin (access denied — shell disabled)
-
-founders → /usr/bin/fish (Fish shell)
-
-guests → /usr/sbin/nologin (access denied — shell disabled)
-
-### To enforce security and usability policies. For example:
-
-Prevent shell access to finance and guest users.
-
-Provide powerful developer-oriented shells to programmers.
-
-### Based on each group’s purpose, we assigned appropriate default shells to users:
-
-Technical support users were assigned the Bash shell.
-
-Developers were assigned the Zsh shell.
-
-Founders were given access to the Fish shell.
-
-Financiers and guests were restricted from accessing any shell by setting their accounts to use a non-interactive shell that blocks login access.
-
-This setup ensured that only technical roles had access to interactive shell environments, while non-technical roles were restricted for security.
+Users from restricted groups (Financiers and Guests) were intentionally prevented from logging into the system by assigning them the nologin shell.
 
 # Task 4: Demonstration of User Capabilities
 Example Commands Executed by Group Members:
@@ -129,8 +104,17 @@ pwd                 # Current directory
 These users are restricted from logging in. Any login attempt will result in:
 This account is currently not available.
 
-![image](https://github.com/user-attachments/assets/25afb0f2-847a-426b-8971-9cfa5fe604a6)
+![image](https://github.com/user-attachments/assets/d8484d09-8a03-4762-a6f0-3b5cba89daef)
 
-Finally, we tested the setup by logging into the accounts of users with shell access. We performed basic system operations such as checking the current user, viewing the working directory, displaying the system date, and checking system uptime. These actions verified that each user’s shell and permissions worked as intended. For users with restricted shells, login attempts were blocked as expected.
-# Conclusion 
-### In this lab, multiple command-line interpreters (Zsh and Fish) were installed, user groups were created to simulate organizational roles, and users were assigned default shells based on their roles. Appropriate shell access was configured to enhance usability and security, and basic system commands were successfully executed by authorized users, confirming correct setup.
+
+To confirm correct shell behavior, authorized users were logged in and prompted to execute simple commands such as:
+
+Viewing system information (uname, neofetch)
+
+Checking the current user (whoami)
+
+Displaying disk usage or directories (df -h, pwd)
+
+Showing system time and hostname (date, hostname)
+
+Users assigned nologin received an error message upon login attempts, confirming that their accounts were effectively restricted.
