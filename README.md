@@ -21,7 +21,7 @@ After installation, these shells were tested individually to ensure proper confi
 
 # Task 2: Creating Users and Groups
 ### Commands Used:
-# Create groups
+### Create groups
 for group in techsupport developers financiers founders guests; do
     sudo groupadd $group
 done
@@ -101,13 +101,13 @@ hostname            # Show machine hostname
 pwd                 # Current directory
 
 ### Financiers & Guests (nologin):
-These users are restricted from logging in. Any login attempt will result in:
+### These users are restricted from logging in. Any login attempt will result in:
 This account is currently not available.
 
 ![image](https://github.com/user-attachments/assets/d8484d09-8a03-4762-a6f0-3b5cba89daef)
 
 
-To confirm correct shell behavior, authorized users were logged in and prompted to execute simple commands such as:
+### To confirm correct shell behavior, authorized users were logged in and prompted to execute simple commands such as:
 
 Viewing system information (uname, neofetch)
 
@@ -118,3 +118,6 @@ Displaying disk usage or directories (df -h, pwd)
 Showing system time and hostname (date, hostname)
 
 Users assigned nologin received an error message upon login attempts, confirming that their accounts were effectively restricted.
+
+# Conclusion 
+This work demonstrated the configuration of a multi-user Linux system with customized shell environments based on user roles. By installing additional shells (Zsh and Fish), we expanded the flexibility and user experience of the terminal. Users were organized into functional groups reflecting a real organizational structure, and their shell access was tailored to match their responsibilities. Technical and developer roles received interactive shells, while access was intentionally restricted for non-technical groups for security purposes. The successful execution of commands by permitted users and blocked access for restricted users confirmed the system’s correct setup. Overall, this case highlights effective system administration practices in managing user roles, permissions, and terminal environments.
